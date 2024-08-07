@@ -175,4 +175,31 @@ public class SQL_Manager : MonoBehaviour
             return false;
         }
     }
+    public bool UpdateUserData(string id, string pw, string phone)
+    {
+        try
+        {
+            if (!Connection_Check(conn))
+            {
+                return false;
+            }
+            string SQL_Command =
+                string.Format(@$"UPDATE user_info SET User_Password='{pw}', User_PhoneNum ='{phone}' WHERE User_Name ='{id}';");
+            MySqlCommand cmd = new MySqlCommand(SQL_Command, conn);
+            reader = cmd.ExecuteReader();
+            if (reader.IsClosed)
+                reader.Close();
+
+            return true;
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+
+            if (reader.IsClosed)
+                reader.Close();
+
+            return false;
+        }
+    }
 }
