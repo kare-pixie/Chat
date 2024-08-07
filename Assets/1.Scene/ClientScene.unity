@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30378899386d91a49ae1c380b0729fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message_Box: []
+  messageBox: []
 --- !u!1 &405595104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,7 +1026,7 @@ MonoBehaviour:
   IP_InputField: {fileID: 478465591}
   Port_InputField: {fileID: 1639858406}
   Status: {fileID: 1663425221}
-  Message_Box: {fileID: 938577620}
+  MessageBox: {fileID: 938577620}
 --- !u!1 &938577618
 GameObject:
   m_ObjectHideFlags: 0

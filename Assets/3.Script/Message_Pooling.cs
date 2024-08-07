@@ -6,52 +6,52 @@ using UnityEngine.UI;
 
 public class Message_Pooling : MonoBehaviour
 {
-    [SerializeField] private Text[] message_Box;
+    [SerializeField] private Text[] messageBox;
 
-    private string current_me = string.Empty;
-    private string past_me;
+    private string current_m = string.Empty;
+    private string past_m;
 
     public Action<string> Message;
-    public void Adding_Message(string me)
+    public void AddingMessage(string message)
     {
-        current_me = me;
+        current_m = message;
     }
 
     private void Start()
     {
-        message_Box = transform.GetComponentsInChildren<Text>();
-        Message = Adding_Message;
-        past_me = current_me;
+        messageBox = transform.GetComponentsInChildren<Text>();
+        Message = AddingMessage;
+        past_m = current_m;
     }
 
     private void Update()
     {
-        if (past_me.Equals(current_me))
+        if (past_m.Equals(current_m))
             return;
 
-        ReadText(current_me);
-        past_me = current_me;
+        ReadText(current_m);
+        past_m = current_m;
     }
-    private void ReadText(string me)
+    private void ReadText(string message)
     {
         bool isInput = false;
-        for(int i = 0; i < message_Box.Length; i++)
+        for(int i = 0; i < messageBox.Length; i++)
         {
-            if(message_Box[i].text.Equals(""))
+            if(messageBox[i].text.Equals(""))
             {
-                message_Box[i].text = me;
+                messageBox[i].text = message;
                 isInput = true;
                 break;
             }
         }
         if(!isInput)
         {
-            for(int i = 1; i<message_Box.Length; i++)
+            for(int i = 1; i<messageBox.Length; i++)
             {
-                message_Box[i - 1].text = message_Box[i].text;
+                messageBox[i - 1].text = messageBox[i].text;
                 //메세지를 미는 작업
             }
-            message_Box[message_Box.Length - 1].text = me;
+            messageBox[messageBox.Length - 1].text = message;
         }
     }
 }

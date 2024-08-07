@@ -22,7 +22,7 @@ public class TCP_Manager : MonoBehaviour
     private StreamReader reader;
     private StreamWriter writer;
 
-    public InputField Message_Box;
+    public InputField MessageBox;
 
     private Message_Pooling message;
 
@@ -119,18 +119,19 @@ public class TCP_Manager : MonoBehaviour
     #endregion
     public void Sending_btn()
     {
-        //만약 내가 메세지를 보냈다면... 내가 보낸 메세지도 Message Box에 넣어야됨
-        if(Sending_Message(Message_Box.text))
+        User_info info = SQL_Manager.instance.info;
+        string m = $"[{info.User_Name}] : {MessageBox.text}";
+        if (Sending_Message(m))
         {
-            message.Message(Message_Box.text);
-            Message_Box.text = string.Empty;
+            message.Message(m);
+            MessageBox.text = string.Empty;
         }
     }
-    private bool Sending_Message(string me)
+    private bool Sending_Message(string message)
     {
         if(writer != null)
         {
-            writer.WriteLine(me);
+            writer.WriteLine(message);
             return true;
         }
         Log.Enqueue("Writer null...");
