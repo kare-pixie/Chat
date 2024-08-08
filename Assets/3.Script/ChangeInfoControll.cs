@@ -27,4 +27,8 @@ public class ChangeInfoControll : MonoBehaviour
             Log.text = "수정 실패";
         }
     }
+    public void Close_Btn()
+    {
+        gameObject.SetActive(false);
+    }
 }

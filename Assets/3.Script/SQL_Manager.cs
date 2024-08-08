@@ -159,9 +159,7 @@ public class SQL_Manager : MonoBehaviour
                 string.Format($"INSERT INTO User_info VALUES ('{id}', '{pw}', '{phone}');");
             MySqlCommand cmd = new MySqlCommand(SQL_Command, conn);
             reader = cmd.ExecuteReader();
-
-            if (reader.IsClosed)
-                reader.Close();
+            reader.Close();
 
             return true;
         }
@@ -187,8 +185,7 @@ public class SQL_Manager : MonoBehaviour
                 string.Format(@$"UPDATE user_info SET User_Password='{pw}', User_PhoneNum ='{phone}' WHERE User_Name ='{id}';");
             MySqlCommand cmd = new MySqlCommand(SQL_Command, conn);
             reader = cmd.ExecuteReader();
-            if (reader.IsClosed)
-                reader.Close();
+            reader.Close();
 
             return true;
         }
