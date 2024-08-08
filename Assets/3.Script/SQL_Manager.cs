@@ -167,7 +167,7 @@ public class SQL_Manager : MonoBehaviour
         {
             Debug.Log(e.Message);
 
-            if (reader.IsClosed)
+            if (!reader.IsClosed)
                 reader.Close();
 
             return false;
@@ -193,7 +193,7 @@ public class SQL_Manager : MonoBehaviour
         {
             Debug.Log(e.Message);
 
-            if (reader.IsClosed)
+            if (!reader.IsClosed)
                 reader.Close();
 
             return false;
